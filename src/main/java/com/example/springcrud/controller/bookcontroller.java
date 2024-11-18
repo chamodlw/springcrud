@@ -46,7 +46,7 @@ public class bookcontroller {
     
     // Get book by id
     @GetMapping("/getBookById/{id}")
-    public ResponseEntity<book> getBookById(@PathVariable long id) {
+    public ResponseEntity<book> getBookById(@PathVariable int id) {
         Optional<book> bookData = book_repo.findById(id);
 
         if(bookData.isPresent()) {
@@ -67,7 +67,7 @@ public class bookcontroller {
 
     // Update book
     @PostMapping("/updateBookById/{id}")
-    public ResponseEntity<book> updateBookById(@PathVariable long id, @RequestBody book newBookData) {
+    public ResponseEntity<book> updateBookById(@PathVariable int id, @RequestBody book newBookData) {
         Optional<book> oldbookData = book_repo.findById(id);
         if(oldbookData.isPresent()) {
             book updatedBookData = oldbookData.get();
@@ -83,7 +83,7 @@ public class bookcontroller {
 
     // Delete book by id
     @DeleteMapping("/deleteBookById/{id}")
-    public ResponseEntity<HttpStatus> deleteBookById(@PathVariable long id) {
+    public ResponseEntity<HttpStatus> deleteBookById(@PathVariable int id) {
         book_repo.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
