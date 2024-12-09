@@ -20,4 +20,4 @@ public class book {
     private String title;
     private String author;
 }
-//model
+//model of book
